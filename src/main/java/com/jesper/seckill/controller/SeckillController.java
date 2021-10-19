@@ -79,6 +79,7 @@ public class SeckillController implements InitializingBean {
         }
         model.addAttribute("user", user);
         //内存标记，减少redis访问
+        System.out.println(goodsId);
         boolean over = localOverMap.get(goodsId);
         if (over) {
             return Result.error(CodeMsg.SECKILL_OVER);

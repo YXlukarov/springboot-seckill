@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.jesper.seckill.bean.User;
+import com.jesper.seckill.service.UserService;
 
 /**
  * Created by jiangyunxiong on 2018/5/18.
@@ -32,46 +34,46 @@ public class DemoController {
 //        return Result.success("Hello，world");
 //    }
 
-//    @RequestMapping("/mq/topic")
-//    @ResponseBody
-//    public Result<String> topic() {
-//        sender.sendTopic("hello,imooc");
-//        return Result.success("Hello，world");
-//    }
-//    @Autowired
-//    UserService userService;
-//
-//    @RequestMapping("/")
-//    @ResponseBody
-//    String home() {
-//        return "Hello World";
-//    }
-//
-//    @RequestMapping("/hello")
-//    @ResponseBody
-//    public Result<String> hello() {
-//        return Result.success("hello, Jesper");
-//    }
-//
-//    @RequestMapping("/Error")
-//    @ResponseBody
-//    public Result<String> error() {
-//        return Result.error(CodeMsg.SERVER_ERROR);
-//    }
-//
-//    @RequestMapping("/Thymeleaf")
-//    public String thymeleaf(Model model) {
-//        model.addAttribute("name", "Jesper");
-//        return "hello";
-//    }
-//
-//    @RequestMapping("/redis/get")
-//    @ResponseBody
-//    public Result<User> redisGet() {
-//        User user = redisService.get(UserKey.getById, ""+1, User.class);
-//        return Result.success(user);
-//    }
-//
+    @RequestMapping("/mq/topic")
+    @ResponseBody
+    public Result<String> topic() {
+        sender.sendTopic("hello,imooc");
+        return Result.success("Hello，world");
+    }
+    @Autowired
+    UserService userService;
+
+    @RequestMapping("/")
+    @ResponseBody
+    String home() {
+        return "Hello World";
+    }
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    public Result<String> hello() {
+        return Result.success("hello, Jesper");
+    }
+
+    @RequestMapping("/Error")
+    @ResponseBody
+    public Result<String> error() {
+        return Result.error(CodeMsg.SERVER_ERROR);
+    }
+
+    @RequestMapping("/Thymeleaf")
+    public String thymeleaf(Model model) {
+        model.addAttribute("name", "Jesper");
+        return "hello";
+    }
+
+    @RequestMapping("/redis/get")
+    @ResponseBody
+    public Result<User> redisGet() {
+        User user = redisService.get(UserKey.getById, ""+1, User.class);
+        return Result.success(user);
+    }
+
 //    @RequestMapping("/redis/set")
 //    @ResponseBody
 //    public Result<Boolean> redisSet() {
@@ -92,12 +94,12 @@ public class DemoController {
 //            return Result.error(CodeMsg.PRIMARY_ERROR);
 //        }
 //    }
-//
-//    @RequestMapping("/db/get")
-//    @ResponseBody
-//    public Result<User> dbGet() {
-//        User user = userService.getById(1);
-//        return Result.success(user);
-//    }
+
+    @RequestMapping("/db/get")
+    @ResponseBody
+    public Result<User> dbGet() {
+        User user = userService.getById(1);
+        return Result.success(user);
+    }
 
 }

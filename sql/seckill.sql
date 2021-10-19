@@ -13,6 +13,10 @@ File Encoding         : 65001
 Date: 2018-05-29 17:29:21
 */
 
+drop database if exists seckill;
+create database seckill;
+use seckill;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
