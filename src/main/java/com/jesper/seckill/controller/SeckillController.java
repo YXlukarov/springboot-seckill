@@ -69,17 +69,18 @@ public class SeckillController implements InitializingBean {
     @RequestMapping(value = "/do_seckill", method = RequestMethod.POST)
     @ResponseBody
     public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) {
-
+        // 访问限流
         if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
             return  Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
         }
-
+        // 验证session，确定用户保持登录
         if (user == null) {
             return Result.error(CodeMsg.SESSION_ERROR);
         }
         model.addAttribute("user", user);
         //内存标记，减少redis访问
         System.out.println(goodsId);
+        //检查商品是否被操作
         boolean over = localOverMap.get(goodsId);
         if (over) {
             return Result.error(CodeMsg.SECKILL_OVER);
