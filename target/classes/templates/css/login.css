@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.head_y{
+    height: 120px;
+    width: auto;
+    background-color: rgb(20, 60, 92);
+}
