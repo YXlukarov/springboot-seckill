@@ -1,8 +1,11 @@
 package com.jesper.seckill.controller;
 
+import com.jesper.seckill.result.CodeMsg;
 import com.jesper.seckill.result.Result;
 import com.jesper.seckill.service.UserService;
 import com.jesper.seckill.vo.LoginVo;
+import com.jesper.seckill.vo.RegVo;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +22,10 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/login")
+@Slf4j
 public class LoginController {
 
-    private static Logger log = LoggerFactory.getLogger(LoginController.class);
+    //private static Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     UserService userService;
@@ -38,6 +42,20 @@ public class LoginController {
         log.info(loginVo.toString());
         String token = userService.login(response, loginVo);
         return Result.success(token);
+    }
+
+    @RequestMapping("/to_register")
+    public String toRegister() { return "register"; }
+
+    @RequestMapping("do_register")
+    @ResponseBody
+    public Result<String> doRegister(HttpServletResponse response, @Valid RegVo regVo) {
+        log.info(regVo.toString());
+        boolean reg = userService.register(response, regVo);
+        if (reg) {
+            return Result.success("Register success!");
+        }
+        else return Result.error(CodeMsg.SERVER_ERROR);
     }
 
 }

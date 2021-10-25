@@ -7,14 +7,19 @@ import com.jesper.seckill.mapper.UserMapper;
 import com.jesper.seckill.redis.RedisService;
 import com.jesper.seckill.redis.UserKey;
 import com.jesper.seckill.result.CodeMsg;
+import com.jesper.seckill.util.DBUtil;
 import com.jesper.seckill.util.MD5Util;
 import com.jesper.seckill.util.UUIDUtil;
 import com.jesper.seckill.vo.LoginVo;
+import com.jesper.seckill.vo.RegVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Date;
 
 /**
  * Created by jiangyunxiong on 2018/5/22.
@@ -71,7 +76,7 @@ public class UserService {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
         String mobile = loginVo.getMobile();
-        String formPass = loginVo.getPassword();
+        String formPass = loginVo.getPassword(); // 用户输入的密码
         //判断手机号是否存在
         User user = getById(Long.parseLong(mobile));
         if (user == null) {
@@ -86,7 +91,7 @@ public class UserService {
         }
         //生成唯一id作为token
         String token = UUIDUtil.uuid();
-        addCookie(response, token, user);
+        addCookie(response, token, user); // 见下
         return token;
     }
 
@@ -117,4 +122,24 @@ public class UserService {
         return user;
     }
 
+    public boolean register(HttpServletResponse response, RegVo regVo){
+        if (regVo == null){
+            throw new GlobalException(CodeMsg.SERVER_ERROR);
+        }
+        String mobile = regVo.getMobile();
+        String passwd = regVo.getPassword();
+        String nickname = regVo.getNickname();
+        User user = getById(Long.parseLong(mobile));
+        if (user != null) {
+            throw new GlobalException(CodeMsg.USER_EXIST);
+        }
+        User u = new User();
+        u.setId(Long.parseLong(mobile));
+        u.setLoginCount(1);
+        u.setNickname(nickname);
+        u.setRegisterDate(new Date());
+        u.setSalt("1a2b3c4d");
+        u.setPassword(MD5Util.inputPassToDbPass(passwd, u.getSalt()));
+        return userMapper.register(u);
+    }
 }
