@@ -123,6 +123,11 @@ public class RedisService {
         }
     }
 
+    /*
+        beanToString方法：传入参数(模板类型的值)
+        返回值：如果是int或者long就返回数值，如果是String就返回字符串，如果是业务Bean就返回处理好的JSON格式的数据
+     */
+
 
     public static <T> String beanToString(T value) {
         if (value == null) {
@@ -141,17 +146,24 @@ public class RedisService {
 
     }
 
+    /*
+        stringToBean方法：传入参数(String类型承载的值，类型的Class)
+        返回值：带有指定数值的返回对象
+     */
+
     public static <T> T stringToBean(String str, Class<T> clazz) {
         if (str == null || str.length() <= 0 || clazz == null) {
             return null;
         }
         if (clazz == int.class || clazz == Integer.class) {
-            return (T) Integer.valueOf(str);
+            return (T) Integer.valueOf(str); // 转化为int型
         } else if (clazz == long.class || clazz == Long.class) {
-            return (T) Long.valueOf(str);
+            return (T) Long.valueOf(str); // 转化为Long型
         } else if (clazz == String.class) {
-            return (T) str;
+            return (T) str; // 转化为String类型
         } else {
+            // 此时转化的对象是业务用到的Bean，JSON.parseObject用于将Json字符串转化为相应的JSON对象，JSON.toJavaObject用于转化为指定的Java对象
+            // 网上查到——可通过JSON.parseObject(JSON.toJSONString(text), clazz) 方式转换成java对象
             return JSON.toJavaObject(JSON.parseObject(str), clazz);
         }
     }

@@ -10,6 +10,7 @@ import com.jesper.seckill.result.CodeMsg;
 import com.jesper.seckill.util.DBUtil;
 import com.jesper.seckill.util.MD5Util;
 import com.jesper.seckill.util.UUIDUtil;
+import com.jesper.seckill.vo.InfoVo;
 import com.jesper.seckill.vo.LoginVo;
 import com.jesper.seckill.vo.RegVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,12 +64,29 @@ public class UserService {
         User toBeUpdate = new User();
         toBeUpdate.setId(id);
         toBeUpdate.setPassword(MD5Util.formPassToDBPass(formPass, user.getSalt()));
-        userMapper.update(toBeUpdate);
+        userMapper.updatePassword(toBeUpdate);
         //更新缓存：先删除再插入
         redisService.delete(UserKey.getById, ""+id);
         user.setPassword(toBeUpdate.getPassword());
         redisService.set(UserKey.token, token, user);
         return true;
+    }
+
+    public boolean updateInfo(String token, long id, InfoVo infoVo) {
+        // 取Redis中的user
+        User user = getById(id);
+        if (user == null) {
+            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+        }
+        // 更新数据库
+        user.setNickname(infoVo.getNickname());
+        user.setHead(infoVo.getHead());
+        userMapper.updateInfo(user);
+        // 更新缓存
+        redisService.delete(UserKey.getById, ""+id);
+        redisService.set(UserKey.token, token, user);
+        return true;
+
     }
 
     public String login(HttpServletResponse response, LoginVo loginVo) {
@@ -89,6 +107,10 @@ public class UserService {
         if (!calcPass.equals(dbPass)) {
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
+        user.setLoginCount(user.getLoginCount()+1);
+        user.setLastLoginDate(new Date());
+        // 更新用户的最后登录日期和登录次数
+        userMapper.updateLogin(user);
         //生成唯一id作为token
         String token = UUIDUtil.uuid();
         addCookie(response, token, user); // 见下
