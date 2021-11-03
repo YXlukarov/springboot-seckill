@@ -7,25 +7,30 @@ import com.jesper.seckill.mapper.UserMapper;
 import com.jesper.seckill.redis.RedisService;
 import com.jesper.seckill.redis.UserKey;
 import com.jesper.seckill.result.CodeMsg;
+import com.jesper.seckill.result.Result;
 import com.jesper.seckill.util.DBUtil;
 import com.jesper.seckill.util.MD5Util;
 import com.jesper.seckill.util.UUIDUtil;
 import com.jesper.seckill.vo.InfoVo;
 import com.jesper.seckill.vo.LoginVo;
 import com.jesper.seckill.vo.RegVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by jiangyunxiong on 2018/5/22.
  */
 @Service
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -54,56 +59,104 @@ public class UserService {
     /**
      * 典型缓存同步场景：更新密码
      */
-    public boolean updatePassword(String token, long id, String formPass) {
-        //取user
-        User user = getById(id);
-        if(user == null) {
-            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+    public boolean updatePassword(HttpServletRequest request, HttpServletResponse response, User user, String formPass) {
+        String token = getTokenFromRequest(request);
+        if (StringUtils.isEmpty(token)){
+            log.warn("未获取到token");
+            User u = userMapper.getById(user.getId());
+            if (u == null){
+                log.warn("用户不存在");
+                throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+            }
+            else {
+                log.info("用户信息存在于数据库，为用户分配新token");
+                token = UUIDUtil.uuid(); // 为用户重新分配token
+                log.info("为"+user+"分配新的token"+token);
+                addCookie(response, token, user);
+            }
         }
         //更新数据库
         User toBeUpdate = new User();
-        toBeUpdate.setId(id);
+        toBeUpdate.setId(user.getId());
         toBeUpdate.setPassword(MD5Util.formPassToDBPass(formPass, user.getSalt()));
         userMapper.updatePassword(toBeUpdate);
         //更新缓存：先删除再插入
-        redisService.delete(UserKey.getById, ""+id);
+        redisService.delete(UserKey.token, token);
         user.setPassword(toBeUpdate.getPassword());
         redisService.set(UserKey.token, token, user);
         return true;
     }
 
-    public boolean updateInfo(String token, long id, InfoVo infoVo) {
-        // 取Redis中的user
-        User user = getById(id);
-        if (user == null) {
-            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+    public String getTokenFromRequest(HttpServletRequest request) {
+        String paramToken = request.getParameter(COOKIE_NAME_TOKEN);
+        String cookieToken = getCookieValue(request, COOKIE_NAME_TOKEN);
+        System.out.println(paramToken);
+        System.out.println(cookieToken);
+        return StringUtils.isEmpty(paramToken) ? cookieToken : paramToken;
+    }
+
+    public boolean updateInfo(HttpServletRequest request, HttpServletResponse response, User user, InfoVo infoVo) {
+        String token = getTokenFromRequest(request);
+        if (StringUtils.isEmpty(token)) {
+            log.warn("未获取到token");
+            User u = userMapper.getById(user.getId());
+            log.info("尝试从数据库中读取用户信息");
+            if (u != null) {
+                token = UUIDUtil.uuid(); // 为用户重新分配token
+                log.info("为"+user+"分配新的token"+token);
+                addCookie(response, token, user);
+            }
+            else{
+                log.warn("用户不存在!");
+                throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+            }
         }
+        // 下列操作的前提是token一定存在
         // 更新数据库
         user.setNickname(infoVo.getNickname());
         user.setHead(infoVo.getHead());
         userMapper.updateInfo(user);
         // 更新缓存
-        redisService.delete(UserKey.getById, ""+id);
-        redisService.set(UserKey.token, token, user);
+        redisService.delete(UserKey.token, token); //先删除user原先的token
+        addCookie(response, token, user); //插入新token
         return true;
 
     }
 
-    public String login(HttpServletResponse response, LoginVo loginVo) {
+    public String login(HttpServletRequest request, HttpServletResponse response, LoginVo loginVo) {
+        // 最开始确认request中是否有token
+        String paramToken = request.getParameter(COOKIE_NAME_TOKEN);
+        String cookieToken = getCookieValue(request, COOKIE_NAME_TOKEN);
+        System.out.println(paramToken);
+        System.out.println(cookieToken);
+        // 若token存在
+        if (StringUtils.isEmpty(cookieToken) || StringUtils.isEmpty(paramToken)) {
+            // 获取存在的token
+            String token = StringUtils.isEmpty(paramToken) ? cookieToken : paramToken;
+            // 根据token获取用户，具体见getByToken函数
+            User tokenUser = getByToken(response, token);
+            if (tokenUser != null) {
+                log.info("已根据token从redis中获取到用户"+tokenUser+",跳过验证密码操作");
+                //System.out.println("已根据token从redis中获取到用户"+tokenUser);
+                return token;
+            }
+        }
+        log.info("未跳过验证密码操作");
+        // 若request中没有token，则进行login操作
         if (loginVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
         String mobile = loginVo.getMobile();
-        String formPass = loginVo.getPassword(); // 用户输入的密码
+        String formPass = loginVo.getPassword(); // 用户输入的密码经过第一次md5加密后所得
         //判断手机号是否存在
-        User user = getById(Long.parseLong(mobile));
+        User user = userMapper.getById(Long.parseLong(mobile));
         if (user == null) {
             throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
         }
         //验证密码
         String dbPass = user.getPassword();
         String saltDB = user.getSalt();
-        String calcPass = MD5Util.formPassToDBPass(formPass, saltDB);
+        String calcPass = MD5Util.formPassToDBPass(formPass, saltDB); // 第二次md5加密
         if (!calcPass.equals(dbPass)) {
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
@@ -127,6 +180,29 @@ public class UserService {
         cookie.setMaxAge(UserKey.token.expireSeconds());
         cookie.setPath("/");//设置为网站根目录
         response.addCookie(cookie);
+    }
+    // 从request中获取指定值
+    private String getCookieValue(HttpServletRequest request, String cookiName) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies == null || cookies.length <= 0) {
+            return null;
+        }
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(cookiName)) {
+                return cookie.getValue();
+            }
+        }
+        return null;
+    }
+    // 从response中拿取token
+    public String getTokenFromResponse(HttpServletResponse response) {
+        String cookie = response.getHeader("set-cookie");
+        if (cookie == null)
+            return "none";
+        String[] strings = cookie.split(";");
+        String token = strings[0].split(":")[1]; //直接取到token
+        System.out.println(token);
+        return token;
     }
 
     /**
