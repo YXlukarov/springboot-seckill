@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- jquery-validator -->
+    <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+    <!-- layer -->
+    <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+    <!-- md5.js -->
+    <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+    <!-- common.js -->
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+</head>
+<body>
+<form name="UIForm" id="UIForm" method="post">
+  <input id="nickname" name="nickname" type="text" placeholder="昵称" required="true" minlength="1">
+  <input id="head" name="head" type="text" placeholder="头像">
+  <button type="submit" onclick="ui()">修改信息</button>
+</form>
+<form name="UPForm" id="UPForm" method="post">
+    <input id="password" name="password" type="password" placeholder="密码" required="true">
+    <button type="submit" onclick="up()">修改密码</button>
+</form>
+</body>
+<script>
+  function ui() {
+    $("#UIForm").validate({
+      submitHandler: function (form){
+        doui();
+      }
+    })
+  }
+  function doui() {
+    g_showLoading();
+    var nickname = $("#nickname").val();
+    var head = $("#head").val();
+    $.ajax({
+      url: "/user/info/updateInfo",
+      type: "POST",
+      data: {
+        nickname: nickname,
+        head: head
+      },
+      success: function (data) {
+          console.log("登录成功");
+        layer.closeAll();
+        if (data.code == 0){
+          layer.msg("更新成功");
+        } else {
+          layer.msg(data.msg);
+        }
+      },
+      error: function () {
+        layer.closeAll();
+      }
+    })
+  }
+  function up() {
+      $("#UPForm").validate({
+          submitHandler: function (form) {
+              doup();
+          }
+      })
+  }
+  function doup() {
+      console.log("do updating password action");
+      g_showLoading();
+      const inputPass = $("#password").val();
+      var salt = g_passsword_salt;
+      var str = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4);
+      var passwd = md5(str);
+      $.ajax({
+          url: "/user/info/updatePasswd",
+          type: "POST",
+          data: {
+              password: passwd
+          },
+          success: function (data) {
+              layer.closeAll();
+              if (data.code == 0) {
+                  layer.msg("成功");
+                  window.location.href = "/user/info";
+              } else {
+                  layer.msg(data.msg);
+              }
+          },
+          error: function () {
+              layer.closeAll();
+          }
+      });
+  }
+</script>
+</html>
