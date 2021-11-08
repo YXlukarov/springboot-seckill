@@ -1,5 +1,6 @@
 package com.jesper.seckill.controller;
 
+import com.jesper.seckill.bean.User;
 import com.jesper.seckill.result.CodeMsg;
 import com.jesper.seckill.result.Result;
 import com.jesper.seckill.service.UserService;
@@ -31,7 +32,6 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-
     @RequestMapping("/to_login")
     public String toLogin() {
         return "login";
@@ -43,6 +43,17 @@ public class LoginController {
         log.info(loginVo.toString());
         String token = userService.login(request, response, loginVo);
         return Result.success(token);
+    }
+
+    @RequestMapping("/check_login")
+    @ResponseBody
+    public Result<String> checkLogin(HttpServletRequest request, HttpServletResponse response, User user) {
+        if (user == null)
+            return Result.error(CodeMsg.SESSION_ERROR);
+        String token = userService.beforeLogin(request, response);
+        if (token == null)
+            return Result.error(CodeMsg.SESSION_ERROR);
+        else return Result.success("1");
     }
 
     @RequestMapping("/to_register")

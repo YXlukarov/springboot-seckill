@@ -123,7 +123,7 @@ public class UserService {
 
     }
 
-    public String login(HttpServletRequest request, HttpServletResponse response, LoginVo loginVo) {
+    public String beforeLogin(HttpServletRequest request, HttpServletResponse response){
         // 最开始确认request中是否有token
         String paramToken = request.getParameter(COOKIE_NAME_TOKEN);
         String cookieToken = getCookieValue(request, COOKIE_NAME_TOKEN);
@@ -136,13 +136,22 @@ public class UserService {
             // 根据token获取用户，具体见getByToken函数
             User tokenUser = getByToken(response, token);
             if (tokenUser != null) {
-                log.info("已根据token从redis中获取到用户"+tokenUser+",跳过验证密码操作");
+                log.info("已根据token从redis中获取到用户"+tokenUser+",可跳过验证密码操作");
                 //System.out.println("已根据token从redis中获取到用户"+tokenUser);
                 return token;
             }
         }
-        log.info("未跳过验证密码操作");
-        // 若request中没有token，则进行login操作
+        return null;
+    }
+
+    public String login(HttpServletRequest request, HttpServletResponse response, LoginVo loginVo) {
+        String t = beforeLogin(request, response);
+        if (t != null) {
+            log.info("已获取token，跳过密码验证");
+            return t;
+        }
+        log.info("开始验证密码操作");
+        // request中没有token，进行login操作
         if (loginVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }

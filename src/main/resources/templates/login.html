@@ -60,6 +60,27 @@
 </form>
 </body>
 <script>
+    $(
+        function () {
+            $.ajax({
+                url: "/login/check_login",
+                type: "POST",
+                data: {
+
+                },
+                success: function (data) {
+                    layer.closeAll();
+                    if (data.code == 0) {
+                        //layer.msg("成功");
+                        window.location.href = "/goods/to_list";
+                    }
+                },
+                error: function () {
+                    layer.closeAll();
+                }
+            })
+        }
+    )
     function login() {
         $("#loginForm").validate({
             submitHandler: function (form) {

@@ -120,7 +120,9 @@
 
     function render(detail) {
         var seckillStatus = detail.seckillStatus;
+        console.log("秒杀状态码：", seckillStatus);
         var remainSeconds = detail.remainSeconds;
+        console.log("剩余时间：", remainSeconds);
         var goods = detail.goods;
         var user = detail.user;
         if (user) {
@@ -134,14 +136,29 @@
         $("#goodsPrice").text(goods.goodsPrice);
         $("#seckillPrice").text(goods.seckillPrice);
         $("#stockCount").text(goods.stockCount);
-    }
+        if (seckillStatus === 2) {
+            $("#seckillTip").html("秒杀已结束");
+            $("#buyButton").attr("disabled", true);
+        }
+        if (seckillStatus === 1) {
+            $("#seckillTip").html("秒杀进行中");
+        }
+        if (seckillStatus === 0) {
+            $("#seckillTip").html("秒杀未开始");
+        }
 
+    }
+    // 直接执行
     $(function () {
+        console.log("1st getDetail");
+        getDetail();
         countDown();
+        console.log("2nd getDetail");
         getDetail();
     });
 
     function getDetail() {
+        console.log("进入getDetail()函数");
         var goodsId = g_getQueryString("goodsId");
         $.ajax({
             url: "/goods/detail/" + goodsId,
@@ -159,25 +176,29 @@
             }
         });
     }
-
+    var timeout;
     function countDown() {
+        console.log("进入countDown函数");
         var remainSeconds = $("#remainSeconds").val();
-        var timeout;
+        console.log("剩余时间："+remainSeconds);
         if (remainSeconds > 0) {//秒杀还没开始，倒计时
+            console.log("1st if");
             $("#buyButton").attr("disabled", true);
             $("#seckillTip").html("秒杀倒计时：" + remainSeconds + "秒");
             timeout = setTimeout(function () {
                 $("#countDown").text(remainSeconds - 1);
                 $("#remainSeconds").val(remainSeconds - 1);
                 countDown();
-            }, 1000);
+            }, 1000); // 通过setTimeout函数控制每秒倒数时间-1
         } else if (remainSeconds == 0) {//秒杀进行中
+            console.log("2nd if");
             $("#buyButton").attr("disabled", false);
             if (timeout) {
                 clearTimeout(timeout);
             }
             $("#seckillTip").html("秒杀进行中");
         } else {//秒杀已经结束
+            console.log("3rd if");
             $("#buyButton").attr("disabled", true);
             $("#seckillTip").html("秒杀已经结束");
         }

@@ -15,6 +15,7 @@ import java.util.List;
 @Mapper
 public interface GoodsMapper {
 
+    //通过左连接操作选取秒杀商品
     @Select("select g.*, sg.stock_count, sg.start_date, sg.end_date, sg.seckill_price, sg.version from sk_goods_seckill sg left join sk_goods g on sg.goods_id = g.id")
     public List<GoodsVo> listGoodsVo();
 
