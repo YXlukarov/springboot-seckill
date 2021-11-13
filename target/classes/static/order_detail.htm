@@ -43,7 +43,30 @@
             <td id="orderStatus">
             </td>
             <td>
-                <button class="btn btn-primary btn-block" type="submit" id="payButton">立即支付</button>
+                <form action="/alipay/pay" method="post" target="_blank">
+                    <div id="body1" name="divcontent" >
+                        <dl class="content">
+                            <dt>商户订单号 ：</dt>
+                            <dd>
+                                <input id="WIDout_trade_no" name="outTradeNo" />
+                            </dd>
+                            <hr class="one_line">
+                            <dt>订单名称 ：</dt>
+                            <dd>
+                                <input id="WIDsubject" name="subject" />
+                            </dd>
+                            <hr class="one_line">
+                            <dt>付款金额 ：</dt>
+                            <dd>
+                                <input id="WIDtotal_amount" name="totalAmount" />
+                            </dd>
+                            <hr class="one_line">
+                            <dt></dt>
+                        </dl>
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit" id="formPayButton">立即支付</button>
+                </form>
+<!--                <button class="btn btn-primary btn-block" type="button" id="payButton" onclick="callFormPay()">立即支付</button>-->
             </td>
         </tr>
         <tr>
@@ -73,6 +96,10 @@
             status = "待发货";
         }
         $("#orderStatus").text(status);
+        $("#WIDout_trade_no").value(order.id);
+        var orderSubject = order.goodsName + "_" + order.goodsCount;
+        $("#WIDsubject").value(orderSubject);
+        $("#WIDtotal_amount").value(order.goodsPrice);
     }
 
     $(function(){
@@ -98,5 +125,9 @@
                 layer.msg("客户端请求有误");
             }
         });
+    }
+
+    function callFormPay() {
+        $("#formPayButton").click();
     }
 </script>
