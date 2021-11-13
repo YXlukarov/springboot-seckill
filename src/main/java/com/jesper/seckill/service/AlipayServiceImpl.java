@@ -6,11 +6,15 @@ import com.alipay.easysdk.payment.common.models.AlipayTradeFastpayRefundQueryRes
 import com.alipay.easysdk.payment.common.models.AlipayTradeQueryResponse;
 import com.alipay.easysdk.payment.common.models.AlipayTradeRefundResponse;
 import com.alipay.easysdk.payment.page.models.AlipayTradePagePayResponse;
+import com.jesper.seckill.bean.OrderInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,9 +27,13 @@ import java.util.Map;
  * @Date: 2021/06/24/22:00
  * @Description:
  */
+
 @Service
 @Slf4j
 public class AlipayServiceImpl implements AlipayService {
+
+    @Autowired
+    OrderService orderService;
 
     @Value("${alipay.returnUrl}")
     private String returnUrl;
@@ -55,6 +63,7 @@ public class AlipayServiceImpl implements AlipayService {
             String key = parameterNames.nextElement();
             String value = request.getParameter(key);
             map.put(key,value);
+            System.out.println(key+": "+value);
         }
         try {
             if (Factory.Payment.Common().verifyNotify(map)) {
@@ -65,6 +74,12 @@ public class AlipayServiceImpl implements AlipayService {
                 if (("TRADE_SUCCESS").equals(trade_status)) {
                     log.info("支付交易成功！");
                     //TODO 更新订单支付状态...
+                    int status = 1;
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date payDate = format.parse(map.get("gmt_payment"));
+                    int orderId = Integer.parseInt(map.get("out_trade_no"));
+                    OrderInfo info = orderService.updateOrderStatusById(orderId, status,payDate);
+                    System.out.println(info.toString());
                 }
 
             } else {
@@ -84,7 +99,7 @@ public class AlipayServiceImpl implements AlipayService {
     @Override
     public Map<String, String[]> returnUrl(HttpServletRequest request) {
         log.info("同步通知叮铃铃");
-        System.out.println(request.getParameterMap());
+        System.out.println(request.getParameterMap().toString());
         return request.getParameterMap();
     }
 

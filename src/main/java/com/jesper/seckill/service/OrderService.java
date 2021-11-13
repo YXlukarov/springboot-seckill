@@ -61,5 +61,11 @@ public class OrderService {
         return orderInfo;
     }
 
-
+    public OrderInfo updateOrderStatusById(long orderId, int status, Date payDate){
+        boolean flag = orderMapper.updateOrderStatusById(orderId, status, payDate);
+        if (flag){
+            return orderMapper.getOrderById(orderId);
+        }
+        else return null;
+    }
 }

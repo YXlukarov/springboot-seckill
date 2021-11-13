@@ -4,6 +4,8 @@ import com.jesper.seckill.bean.OrderInfo;
 import com.jesper.seckill.bean.SeckillOrder;
 import org.apache.ibatis.annotations.*;
 
+import java.util.Date;
+
 /**
  * Created by jiangyunxiong on 2018/5/23.
  */
@@ -13,7 +15,6 @@ public interface OrderMapper {
 
     @Select("select * from sk_order where user_id = #{userId} and goods_id = #{goodsId}")
     public SeckillOrder getOrderByUserIdGoodsId(@Param("userId") long userId, @Param("goodsId") long goodsId);
-
 
     /**
      * 通过@SelectKey使insert成功后返回主键id，也就是订单id
@@ -31,5 +32,8 @@ public interface OrderMapper {
 
     @Select("select * from sk_order_info where id = #{orderId}")
     public OrderInfo getOrderById(@Param("orderId")long orderId);
+
+    @Update("update sk_order_info set status = #{status}, pay_date = #{payDate} where id = #{orderId}")
+    public boolean updateOrderStatusById(@Param("orderId")long orderId, int status, Date payDate);
 
 }
