@@ -17,17 +17,57 @@
     <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
     <!-- common.js -->
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
+
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            /*background: url('/img/bg2.jpg') no-repeat;*/
+            background-size: 100% 100%;
+        }
+
+        #goodslist td {
+            border-top: 1px solid #39503f61;
+        }
+
+        .bottom{
+            position: relative;
+            width: 1535px;
+            height: 200px;
+            background-color: rgb(13, 86, 144);
+            border: 1px solid transparent;
+        }
+        .nothing{
+            margin: 40px;
+        }
+        .nothing p,.lazy p{
+            color: white;
+            font-size: 14px;
+            line-height: 30px;
+        }
+        .lazy{
+            position: absolute;
+            top:100px;
+            right: 100px;
+        }
+
+    </style>
 </head>
 <body>
 
 <div class="panel panel-default">
-    <div class="panel-heading">秒杀商品详情</div>
+
+    <div class="panel-heading">秒杀商品详情2</div>
     <div class="panel-body">
         <span th:if="${user eq null}"> 您还没有登录，请登陆后再操作<br/></span>
     </div>
+
     <table class="table" id="goodslist">
         <tr>
-            <td>商品名称</td>
+            <td>商品名称1</td>
             <td colspan="3" th:text="${goods.goodsName}"></td>
         </tr>
         <tr>
@@ -71,6 +111,8 @@
     </table>
 </div>
 </body>
+<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 <script>
     $(function () {
         countDown();

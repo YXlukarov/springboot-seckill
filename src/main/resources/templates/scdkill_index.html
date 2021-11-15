@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="newShop" />
+    <meta name="description" content="商城界面" />
+    <link type="text/css" rel="stylesheet"  th:href="@{/scdkillstatic/css/public.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/scdkillstatic/css/index.css}" />
+    <style>
+        .bottom{
+            position: relative;
+            width: 1535px;
+            height: 200px;
+            background-color: rgb(13, 86, 144);
+            border: 1px solid transparent;
+        }
+        .nothing{
+            margin: 40px;
+        }
+        .nothing p,.lazy p{
+            color: white;
+            font-size: 14px;
+            line-height: 30px;
+        }
+        .lazy{
+            position: absolute;
+            top:100px;
+            right: 100px;
+        }
+
+    </style>
+</head>
+<body>
+<!--<!head>-->
+<div class="head" >
+    <div class="wrapper clearfix">
+        <div class="clearfix" id="top">
+            <h1 class="fl"><a href="index.html"><img th:src="@{/scdkillstatic/img/a-logo1.png}"/></a></h1>
+            <div class="fr clearfix" id="top1">
+
+                <div class="btn fl clearfix">
+                    <a href="mygxin.html"><img th:src="@{/scdkillstatic/img/grzx.png}"/></a>
+                    <a href="#" class="er1"><img th:src="@{/scdkillstatic/img/ewm.png}"/></a>
+                    <a href="cart.html"><img th:src="@{/scdkillstatic/img/gwc.png}"/></a>
+                    <p><a href="#"><img th:src="@{/scdkillstatic/img/smewm.png}"/></a></p>
+                </div>
+            </div>
+        </div>
+        <ul class="clearfix" id="bott" style="position: relative;left: 200px">
+            <li style="font-weight: bolder;"><a style="font-size: 22px" th:href="@{'/login/scdkill_index'}">首页</a></li>
+            <li style="font-weight: bolder;">
+                <a  style="font-size: 18px;color: #0c85d0" th:href="@{'/goods/to_list'}">秒杀列表</a>
+
+            </li>
+            <li>
+                <a style="font-size: 18px;color: #0c85d0" th:href="@{'/login/info'}">个人主页</a>
+
+            </li>
+            <li>
+                <a  style="font-size: 18px;color: #0c85d0" th:href="@{'/login/cart'}">购物列表</a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<!--banner-->
+<div class="block_home_slider">
+    <div id="home_slider" class="flexslider">
+        <ul class="slides">
+            <li>
+                <div class="slide">
+                    <img th:src="@{/scdkillstatic/temp/banner3.jpg}"/>
+                </div>
+            </li>
+            <li>
+                <div class="slide">
+                    <img th:src="@{/scdkillstatic/temp/banner2.jpg}"/>
+                </div>
+            </li>
+            <li>
+                <div class="slide">
+                    <img th:src="@{/scdkillstatic/temp/banner1.gif}"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--img-->
+<div class="thImg">
+    <div class="clearfix">
+        <a href="vase_proList.html"><img th:src="@{/scdkillstatic/temp/b2.png}"/></a>
+        <a href="proList.html"><img th:src="@{/scdkillstatic/temp/b1.jpg}"/></a>
+        <a href="#2"><img th:src="@{/scdkillstatic/temp/b3.png}"/></a>
+    </div>
+</div>
+
+<!--news-->
+<div class="news">
+    <div class="wrapper">
+        <div class="divider"></div>
+        <hr class="simple" color="#6f5499" />
+        <div style="color: transparent">1</div>
+        <div style="color: transparent">1</div>
+        <div style="color: transparent">1</div>
+
+        <div class="top clearfix">
+            <a href="proDetail.html"><img th:src="@{/scdkillstatic/img/n1.jpg}"/><p></p></a>
+            <a href="proDetail.html"><img th:src="@{/scdkillstatic/img/n2.jpg}"/><p></p></a>
+            <a href="proDetail.html"><img th:src="@{/scdkillstatic/img/n3.jpg}"/><p></p></a>
+        </div>
+        <div class="bott clearfix">
+            <a href="proDetail.html"><img th:src="@{/scdkillstatic/img/n4.jpg}"/><p></p></a>
+            <a href="proDetail.html"><img th:src="@{/scdkillstatic/img/n5.jpg}"/><p></p></a>
+            <a href="proDetail.html"><img th:src="@{/scdkillstatic/img/n6.jpg}"/><p></p></a>
+        </div>
+        <div class="divider"></div>
+
+        <hr class="simple" color="#6f5499" />
+        <div style="color: transparent">1</div>
+        <div style="color: transparent">1</div>
+        <div style="color: transparent">1</div>
+        <div class="flower clearfix tran">
+            <a th:href="@{'/login/productdetail'}" class="clearfix">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/男装3.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【男装】男装1</dd>
+                    <dd><span>¥ 179.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/男装2.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【男装】男装2</dd>
+                    <dd><span>¥ 279.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/男装4.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【男装】男装3</dd>
+                    <dd><span>¥ 379.00</span></dd>
+                </dl>
+            </a>
+        </div>
+        <div class="flower clearfix tran">
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/女装1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【女装】女装1</dd>
+                    <dd><span>¥ 79.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/女装3.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【女装】女装2</dd>
+                    <dd><span>¥ 179.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/女装2.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【女装】女装3</dd>
+                    <dd><span>¥ 379.00</span></dd>
+                </dl>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--ad-->
+<a href="#" class="ad"><img th:src="@{/scdkillstatic/temp/miaosha.gif}"/></a>
+
+<!--people-->
+<div class="people">
+    <div class="wrapper">
+        <h2><img th:src="@{/scdkillstatic/img/ih3.jpg}"/></h2>
+        <div class="pList clearfix tran">
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】不锈钢壁饰墙饰软装</dd>
+                    <dd><span>￥688.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】小城动物木板画壁挂北欧</dd>
+                    <dd><span>￥188.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】玄关假山水壁饰背景墙饰挂件创意</dd>
+                    <dd><span>￥599.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】金属树枝壁饰铜鸟装饰品</dd>
+                    <dd><span>￥928.00</span></dd>
+                </dl>
+            </a>
+        </div>
+        <div class="pList clearfix tran">
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】金属壁饰创意背景墙面挂件创意</dd>
+                    <dd><span>￥228.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】小城动物木板画壁挂北欧</dd>
+                    <dd><span>￥199.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】欧式复古挂钟创意餐厅钟表家居挂件</dd>
+                    <dd><span>￥666.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】客厅地中海欧式现代相片墙创意</dd>
+                    <dd><span>￥59.80</span></dd>
+                </dl>
+            </a>
+        </div>
+        <div class="pList clearfix tran">
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】铁艺荷叶壁挂软装背景墙上装饰品</dd>
+                    <dd><span>￥800.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <img th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】欧式照片墙 创意组合结婚礼物</dd>
+                    <dd><span>￥189.00</span></dd>
+                </dl>
+            </a>
+            <a th:href="@{'/login/productdetail'}">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】欧式钟表相框墙挂墙创意组合</dd>
+                    <dd><span>￥148.00</span></dd>
+                </dl>
+            </a>
+            <a href="proDetail.html">
+                <dl>
+                    <dt>
+                        <span class="abl"></span>
+                        <iimg th:src="@{/scdkillstatic/temp/phone1.jpg}"/>
+                        <span class="abr"></span>
+                    </dt>
+                    <dd>【最家】小城动物木板画壁挂北欧</dd>
+                    <dd><span>￥188.00</span></dd>
+                </dl>
+            </a>
+        </div>
+    </div>
+</div>
+<!--返回顶部-->
+<div class="gotop">
+
+    <a th:href="@{'/login/cart'}">
+        <dl>
+            <dt><img th:src="@{/scdkillstatic/img/gt1.png}"/></dt>
+            <dd>去购<br />物车</dd>
+        </dl>
+    </a>
+    <a href="#" class="dh">
+        <dl>
+            <dt><img th:src="@{/scdkillstatic/img/gt2.png}"/></dt>
+            <dd>联系<br />客服</dd>
+        </dl>
+    </a>
+    <a th:href="@{'/login/info'}">
+        <dl>
+            <dt><img th:src="@{/scdkillstatic/img/gt3.png}"/></dt>
+            <dd>个人<br />中心</dd>
+        </dl>
+    </a>
+    <a href="#" class="toptop" style="display: none">
+        <dl>
+            <dt><img th:src="@{/scdkillstatic/img/gt4.png}"/></dt>
+            <dd>返回<br />顶部</dd>
+        </dl>
+    </a>
+    <p>400-800-8200</p>
+</div>
+
+<!--login-->
+<!--footer-->
+<div class="footer">
+    <div class="top">
+        <div class="wrapper">
+            <div class="clearfix">
+                <a href="#2" class="fl"><img th:src="@{/scdkillstatic/img/foot1.png}"/></a>
+                <span class="fl">7天无理由退货</span>
+            </div>
+            <div class="clearfix">
+                <a href="#2" class="fl"><img th:src="@{/scdkillstatic/img/foot2.png}"/></a>
+                <span class="fl">15天免费换货</span>
+            </div>
+            <div class="clearfix">
+                <a href="#2" class="fl"><img th:src="@{/scdkillstatic/img/foot3.png}"/></a>
+                <span class="fl">满599包邮</span>
+            </div>
+            <div class="clearfix">
+                <a href="#2" class="fl"><img th:src="@{/scdkillstatic/img/foot4.png}"/></a>
+                <span class="fl">手机特色服务</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="bottom">
+    <div class="nothing">
+        <p>常用系统：中南大学 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 计算机学院管理系统&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;会议预订系统</p>
+        <br/>
+        <br/>
+        <p>联系方式：0731-88836659 地址：湖南省长沙市岳麓区中南大学计算机楼<br/>
+
+            Copyright ? 2017-2019 中南大学计算机学院 All Rights Reserved.</p>
+    </div>
+    <div class="lazy">
+        <p>首页 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 管理员邮箱&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;校长信箱</p>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" th:src="@{/scdkillstatic/js/jquery-1.12.4.min.js}" ></script>
+<script  type="text/javascript" th:src="@{/scdkillstatic/js/public.js}" ></script>
+<script type="text/javascript" th:src="@{/scdkillstatic/js/nav.js}" ></script>
+<script type="text/javascript" th:src="@{/scdkillstatic/js/jquery.flexslider-min.js}" ></script>
+<script type="text/javascript">
+    $(function() {
+        $('#home_slider').flexslider({
+            animation: 'slide',
+            controlNav: true,
+            directionNav: true,
+            animationLoop: true,
+            slideshow: true,
+            slideshowSpeed:2000,
+            useCSS: false
+        });
+
+    });
+</script>
+
+
+</body>
+</html>

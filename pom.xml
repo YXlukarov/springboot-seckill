@@ -17,8 +17,10 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
+
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 
 	<dependencies>
 
@@ -31,6 +33,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
@@ -152,8 +156,6 @@
 			<version>5.2.0</version>
 			<scope>test</scope>
 		</dependency>
-
-
 
 	</dependencies>
 

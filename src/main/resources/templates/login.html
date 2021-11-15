@@ -33,7 +33,7 @@
     <div class="left_head" style="
     width: 500px;
     height: 200px;
-    background: url('pic/csu.png') no-repeat;
+    background: url('/img/csu.png') no-repeat;
     position: absolute;
     top: 150px;
     left: 200px;
@@ -70,8 +70,6 @@
                        minlength="11" maxlength="11"/>
             </div>
 
-
-
             <div class="col-md-1">
             </div>
         </div>
@@ -80,8 +78,7 @@
     <div class="form-group">
         <div class="row">
             <label class="form-label col-md-4">请输入密码</label>
-            <br></br>
-            <br></br>
+
             <div class="col-md-5">
                 <input id="password" name="password" class="form-control" type="password" placeholder="密码"
                        required="true" minlength="6" maxlength="16"/>
@@ -91,10 +88,6 @@
 
     <div class="row">
         <div class="col-md-5">
-
-            <button class="btn btn-primary btn-block" type="reset" onclick="goregister()">注册</button>
-        </div>
-        <div class="col-md-5">
             <button class="btn btn-primary btn-block" type="submit" onclick="login()">登录</button>
         </div>
     </div>
@@ -103,12 +96,11 @@
 
 </div>
 </div>
+
+
 </body>
 
 <script>
-    function goregister(){
-        window.location.href="register.html"
-    }
     function login() {
         $("#loginForm").validate({
             submitHandler: function (form) {
