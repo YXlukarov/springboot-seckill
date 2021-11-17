@@ -12,6 +12,7 @@ import com.jesper.seckill.util.MD5Util;
 import com.jesper.seckill.util.UUIDUtil;
 import com.jesper.seckill.vo.LoginVo;
 import com.jesper.seckill.vo.RegVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ import java.util.Date;
  * Created by jiangyunxiong on 2018/5/22.
  */
 @Service
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -126,6 +128,7 @@ public class UserService {
         if (regVo == null){
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
+        log.info("call userservice");
         String mobile = regVo.getMobile();
         String passwd = regVo.getPassword();
         String nickname = regVo.getNickname();
@@ -140,6 +143,7 @@ public class UserService {
         u.setRegisterDate(new Date());
         u.setSalt("1a2b3c4d");
         u.setPassword(MD5Util.inputPassToDbPass(passwd, u.getSalt()));
+        log.info(u.toString());
         return userMapper.register(u);
     }
 }

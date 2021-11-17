@@ -4,8 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a6d5c8b-0c06-411c-9d63-f5f8a937fe05" name="Default Changelist" comment="11/15 9：47">
+    <list default="true" id="4a6d5c8b-0c06-411c-9d63-f5f8a937fe05" name="Default Changelist" comment="11/15 1018">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/iPhone13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/ip41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/t1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/css/mygxin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/css/proList.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/seckill/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/seckill/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/seckill/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/seckill/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/seckill/vo/RegVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/seckill/vo/RegVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/头像.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/scdkillstatic/temp/头像.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/scdkill_goodsdetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/scdkill_goodsdetails.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/scdkill_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/scdkill_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/scdkill_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/scdkill_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/scdkill_pay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/scdkill_pay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/jesper/seckill/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jesper/seckill/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/jesper/seckill/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jesper/seckill/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/order_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,18 +79,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/scdkill_static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates\css" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\scdkillstatic\img" />
       <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\scdkill_static" />
       <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates\js" />
       <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates" />
-      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates\css" />
-      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\newshopStatic" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\scdkillstatic\img" />
@@ -159,6 +182,13 @@
       <workItem from="1636936899045" duration="4788000" />
       <workItem from="1636942147958" duration="400000" />
       <workItem from="1636942559729" duration="113000" />
+      <workItem from="1636942679228" duration="668000" />
+      <workItem from="1636967732162" duration="472000" />
+      <workItem from="1637023070606" duration="3825000" />
+      <workItem from="1637052513822" duration="2717000" />
+      <workItem from="1637075302891" duration="678000" />
+      <workItem from="1637109274197" duration="3580000" />
+      <workItem from="1637112993579" duration="2545000" />
     </task>
     <task id="LOCAL-00001" summary="加一张图片">
       <created>1635147764072</created>
@@ -174,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636940972407</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="11/15 1018">
+      <created>1636942703106</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636942703108</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +233,17 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="加一张图片" />
     <MESSAGE value="11/15 9：47" />
-    <option name="LAST_COMMIT_MESSAGE" value="11/15 9：47" />
+    <MESSAGE value="11/15 1018" />
+    <option name="LAST_COMMIT_MESSAGE" value="11/15 1018" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLIntegrityConstraintViolationException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

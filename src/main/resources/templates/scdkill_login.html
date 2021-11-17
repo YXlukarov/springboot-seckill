@@ -211,15 +211,17 @@
 <body>
 <div class="dowebok" id="dowebok">
     <div class="form-container sign-up-container">
-        <form>
+        <form id="myregform" method="post">
             <h1>注册</h1>
 
 
-            <input type="text" id="Username" name="username" placeholder="请输入姓名"/>
+            <input type="text" id="Username" name="username" placeholder="请输入手机"/>
+
+            <input type="text" id="Nickname" name="nickname" placeholder="请输入昵称"/>
 
             <input type="password" id="Password" name="password" placeholder="请输入密码"/>
 
-            <button id="myregister" onclick="doregister()">注册</button>
+            <button id="myregister">注册</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
@@ -263,12 +265,12 @@
 
     var myregister = document.getElementById('myregister')
     myregister.onclick = function (){
+        myReg();
         alert("添加成功！");
         container.classList.add('right-panel-active');
     }
-</script>
-<!--获取身份信息-->
-<script>
+<!--&lt;!&ndash;获取身份信息&ndash;&gt;-->
+<!--<script>-->
     function mylogin() {
         $("#myloginform").validate({
             submitHandler: function (form) {
@@ -310,7 +312,49 @@
             }
         });
     }
+    function myReg() {
+        console.log("reg button clicked");
+        $("#myregform").validate({
+            submitHandler: function (form) {
+                doReg();
+            }
+        });
+    }
+    function doReg() {
+        console.log("doreg");
+        g_showLoading();
+        var mobile = $("#Username").val();
+        var inputPass = $("#Password").val();
+        var nickname = $("#Nickname").val();
+        // var salt = g_passsword_salt;
+        // var str = "" + salt.charAt(0) + salt.charAt(2) + inputPass + salt.charAt(5) + salt.charAt(4);
+        // var password = md5(str);
 
+
+        $.ajax({
+            url:"/login/do_register",
+            type:"POST",
+            data:{
+                mobile: mobile,
+                password: inputPass,
+                nickname:nickname
+            },
+            success:function (data){
+                layer.closeAll();
+                if(data.code == 0){
+                    layer.msg("Reg success, please login!");
+                }
+                else{
+                    alert('error');
+                    // window.location.href = "/login/scdkill_index";
+                }
+            },
+            error: function () {
+                layer.closeAll();
+                alert("no");
+            }
+        });
+    }
 </script>
 
 

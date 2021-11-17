@@ -79,12 +79,18 @@ public class LoginController {
         return "scdkill_goodsdetails";
     }
 
+    @RequestMapping("/pay")
+    public String toscdkillpay(){
+        return "scdkill_pay";
+    }
+
 
 
 
     @RequestMapping("do_register")
     @ResponseBody
     public Result<String> doRegister(HttpServletResponse response, @Valid RegVo regVo) {
+        log.info("call do_register");
         log.info(regVo.toString());
         boolean reg = userService.register(response, regVo);
         if (reg) {
