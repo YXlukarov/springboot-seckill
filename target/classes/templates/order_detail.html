@@ -119,7 +119,30 @@
         	<span th:if="${orderInfo.status eq 5}">已完成</span>
         </td>
         <td>
-        	<button class="btn btn-primary btn-block" type="submit" id="payButton">立即支付</button>
+            <form action="/alipay/pay" method="post" target="_blank">
+                <div id="body1" class="show" name="divcontent">
+                    <dl class="content">
+                        <dt>商户订单号 ：</dt>
+                        <dd>
+                            <input id="WIDout_trade_no" name="outTradeNo" th:text="${orderInfo.id}" />
+                        </dd>
+                        <hr class="one_line">
+                        <dt>订单名称 ：</dt>
+                        <dd>
+                            <input id="WIDsubject" name="subject" th:text="${goods.goodsName}" />
+                        </dd>
+                        <hr class="one_line">
+                        <dt>付款金额 ：</dt>
+                        <dd>
+                            <input id="WIDtotal_amount" name="totalAmount" th:text="${goods.goodsPrice}" />
+                        </dd>
+                        <hr class="one_line">
+                        <dt></dt>
+                    </dl>
+                </div>
+                <button class="btn btn-primary btn-block" type="submit" id="payButton">立即支付</button>
+            </form>
+
         </td>
      </tr>
       <tr>

@@ -14,7 +14,7 @@ public class MD5Util {
     private static final String salt = "1a2b3c4d";
 
     /**
-     * 第一次MD5加密，用于网络传输
+     * 第一次MD5加密，用于网络传输。通过JS实现。
      * @param inputPass
      * @return
      */
@@ -43,7 +43,7 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        System.out.println(inputPassToDbPass("123456","1a2b3c4d"));
+        System.out.println(inputPassToDbPass("12345","1a2b3c4d"));
 
     }
 

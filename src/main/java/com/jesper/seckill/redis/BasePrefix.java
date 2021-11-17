@@ -5,8 +5,9 @@ package com.jesper.seckill.redis;
  */
 public abstract class BasePrefix implements KeyPrefix {
 
+    // 存入Redis的过期时间
     private int expireSeconds;
-
+    // 参数类类名
     private String prefix;
 
     public BasePrefix(String prefix){
@@ -25,7 +26,7 @@ public abstract class BasePrefix implements KeyPrefix {
 
     @Override
     public String getPrefix() {
-        String className = getClass().getSimpleName();//拿到参数类类名
+        String className = getClass().getSimpleName(); //拿到参数类类名
         return className + ":" + prefix;
     }
 }

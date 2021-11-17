@@ -62,4 +62,9 @@ public class User {
     public void setLoginCount(Integer loginCount) {
         this.loginCount = loginCount;
     }
+
+    @Override
+    public String toString(){
+        return id.toString()+' '+nickname;
+    }
 }
