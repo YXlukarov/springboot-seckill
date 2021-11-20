@@ -17,6 +17,9 @@
     <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
     <!-- common.js -->
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/scdkillstatic/css/public.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/scdkillstatic/css/proList.css}"/>
+
     <style type="text/css">
         html, body {
             height: 100%;
@@ -24,17 +27,71 @@
         }
 
         body {
-            background: url('/img/bg2.jpg') no-repeat;
+            /*background: url('/img/bg2.jpg') no-repeat;*/
             background-size: 100% 100%;
         }
 
         #goodslist td {
             border-top: 1px solid #39503f61;
         }
+
+         .bottom{
+             position: relative;
+             width: 1535px;
+             height: 200px;
+             background-color: rgb(13, 86, 144);
+             border: 1px solid transparent;
+         }
+        .nothing{
+            margin: 40px;
+        }
+        .nothing p,.lazy p{
+            color: white;
+            font-size: 14px;
+            line-height: 30px;
+        }
+        .lazy{
+            position: absolute;
+            top:100px;
+            right: 100px;
+        }
+
     </style>
 </head>
 <body>
+<!--head-->
+<div class="head">
+    <div class="wrapper clearfix">
+        <div class="clearfix" id="top">
+            <h1 class="fl"><a href="index.html"><img th:src="@{/scdkillstatic/img/a-logo1.png}"/></a></h1>
+            <div class="fr clearfix" id="top1">
 
+                <div class="btn fl clearfix">
+                    <a th:href="@{'/login/to_login'}"><img th:src="@{/scdkillstatic/img/grzx.png}"/></a>
+                    <a href="#" class="er1"><img th:src="@{/scdkillstatic/img/ewm.png}"/></a>
+                    <a href="cart.html"><img th:src="@{/scdkillstatic/img/gwc.png}"/></a>
+                    <p><a href="#"><img th:src="@{/scdkillstatic/img/smewm.png}"/></a></p>
+                </div>
+            </div>
+        </div>
+        <ul class="clearfix" id="bott" style="position: relative;left: 200px">
+            <li style="font-weight: bolder;"><a style="font-size: 22px" th:href="@{'/login/scdkill_index'}">首页</a></li>
+            <li style="font-weight: bolder;">
+                <a  style="font-size: 18px;color: #0c85d0" th:href="@{'/goods/to_list'}">秒杀列表</a>
+
+            </li>
+            <li>
+                <a style="font-size: 18px;color: #0c85d0" th:href="@{'/login/info'}">个人主页</a>
+
+            </li>
+            <li>
+                <a  style="font-size: 18px;color: #0c85d0" th:href="@{'/login/cart'}">购物列表</a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container">
 <div class="panel panel-default" style="height:100%;background-color:rgba(222,222,222,0.8)">
     <div class="panel-heading">秒杀商品列表</div>
     <table class="table" id="goodslist">
@@ -56,5 +113,22 @@
         </tr>
     </table>
 </div>
+</div>
+
+<div class="bottom">
+    <div class="nothing">
+        <p>常用系统：中南大学 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 计算机学院管理系统&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;会议预订系统</p>
+        <br/>
+        <br/>
+        <p>联系方式：0731-88836659 地址：湖南省长沙市岳麓区中南大学计算机楼<br/>
+
+            Copyright ? 2017-2019 中南大学计算机学院 All Rights Reserved.</p>
+    </div>
+    <div class="lazy">
+        <p>首页 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 管理员邮箱&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;校长信箱</p>
+    </div>
+
+</div>
+
 </body>
 </html>

@@ -233,6 +233,7 @@ public class UserService {
         if (regVo == null){
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
+        log.info("call userservice");
         String mobile = regVo.getMobile();
         String passwd = regVo.getPassword();
         String nickname = regVo.getNickname();
@@ -247,6 +248,7 @@ public class UserService {
         u.setRegisterDate(new Date());
         u.setSalt("1a2b3c4d");
         u.setPassword(MD5Util.inputPassToDbPass(passwd, u.getSalt()));
+        log.info(u.toString());
         return userMapper.register(u);
     }
 }

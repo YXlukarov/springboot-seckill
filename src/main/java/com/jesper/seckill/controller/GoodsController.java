@@ -101,7 +101,7 @@ public class GoodsController {
 
         long startTime = goods.getStartDate().getTime();
         long endTime = goods.getEndDate().getTime();
-        long now = System.currentTimeMillis();
+        long now = System. currentTimeMillis();
 
         int seckillStatus = 0;
         int remainSeconds = 0;

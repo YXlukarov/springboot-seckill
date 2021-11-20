@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a6d5c8b-0c06-411c-9d63-f5f8a937fe05" name="Default Changelist" comment="11/15 1018">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Thymeleaf" />
+        <option value="CSS File" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1zzMLaOVlmxtWxgJ0BczrQGFPqH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/css" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates\css" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\scdkillstatic\img" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\scdkill_static" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates\js" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\scdkillstatic\img" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\js" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\static\newshopStatic" />
+      <recent name="D:\rush\架构\springboot-seckill\src\main\resources\templates\css\css_hw" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="jesper_seckill" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jesper.seckill.MainApplication" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="seckill" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="jesper_seckill" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jesper.seckill.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jesper.seckill.MainApplication" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.seckill" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a6d5c8b-0c06-411c-9d63-f5f8a937fe05" name="Default Changelist" comment="" />
+      <created>1635146410806</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635146410806</updated>
+      <workItem from="1635146417038" duration="41000" />
+      <workItem from="1635146504650" duration="6988000" />
+      <workItem from="1635159963763" duration="2537000" />
+      <workItem from="1635213035519" duration="1923000" />
+      <workItem from="1635236919086" duration="3026000" />
+      <workItem from="1635317297511" duration="202000" />
+      <workItem from="1635336775469" duration="817000" />
+      <workItem from="1635420785532" duration="7140000" />
+      <workItem from="1635489738293" duration="795000" />
+      <workItem from="1635505636550" duration="882000" />
+      <workItem from="1635507510928" duration="8414000" />
+      <workItem from="1635594716545" duration="143000" />
+      <workItem from="1635595289757" duration="112000" />
+      <workItem from="1635755139002" duration="2344000" />
+      <workItem from="1635757785642" duration="1165000" />
+      <workItem from="1635765103789" duration="433000" />
+      <workItem from="1635765572586" duration="1118000" />
+      <workItem from="1635820981371" duration="279000" />
+      <workItem from="1635822264863" duration="362000" />
+      <workItem from="1635840220309" duration="4999000" />
+      <workItem from="1635852616472" duration="6981000" />
+      <workItem from="1635946755666" duration="535000" />
+      <workItem from="1635987145540" duration="2949000" />
+      <workItem from="1636027978994" duration="2072000" />
+      <workItem from="1636038115891" duration="31000" />
+      <workItem from="1636158902643" duration="2098000" />
+      <workItem from="1636163104307" duration="3662000" />
+      <workItem from="1636340246123" duration="1547000" />
+      <workItem from="1636446096932" duration="3192000" />
+      <workItem from="1636504837934" duration="5096000" />
+      <workItem from="1636549267972" duration="1819000" />
+      <workItem from="1636590838584" duration="3412000" />
+      <workItem from="1636677607740" duration="1655000" />
+      <workItem from="1636763742127" duration="6419000" />
+      <workItem from="1636785420327" duration="5098000" />
+      <workItem from="1636803381847" duration="6411000" />
+      <workItem from="1636903589741" duration="2248000" />
+      <workItem from="1636936899045" duration="4788000" />
+      <workItem from="1636942147958" duration="400000" />
+      <workItem from="1636942559729" duration="113000" />
+      <workItem from="1636942679228" duration="668000" />
+      <workItem from="1636967732162" duration="472000" />
+      <workItem from="1637023070606" duration="3825000" />
+      <workItem from="1637052513822" duration="2717000" />
+      <workItem from="1637075302891" duration="678000" />
+      <workItem from="1637109274197" duration="3580000" />
+      <workItem from="1637112993579" duration="3809000" />
+    </task>
+    <task id="LOCAL-00001" summary="加一张图片">
+      <created>1635147764072</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1635147764072</updated>
+    </task>
+    <task id="LOCAL-00002" summary="11/15 9：47">
+      <created>1636940972407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636940972407</updated>
+    </task>
+    <task id="LOCAL-00003" summary="11/15 1018">
+      <created>1636942703106</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1636942703108</updated>
+    </task>
+    <task id="LOCAL-00004" summary="11/15 1018">
+      <created>1637116729305</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637116729305</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="加一张图片" />
+    <MESSAGE value="11/15 9：47" />
+    <MESSAGE value="11/15 1018" />
+    <option name="LAST_COMMIT_MESSAGE" value="11/15 1018" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLIntegrityConstraintViolationException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

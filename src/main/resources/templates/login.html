@@ -8,6 +8,7 @@
     <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
     <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
     <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
     <!-- jquery-validator -->
     <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
@@ -21,18 +22,54 @@
 
 </head>
 <body>
+<div class="head_y" style="
+    height: 690px;
+    width: auto;
+    border: 1px solid transparent;
+    background-color: rgb(248, 229, 224);
+    text-align: center;
+    position: relative;
+">
+    <div class="left_head" style="
+    width: 500px;
+    height: 200px;
+    background: url('/img/csu.png') no-repeat;
+    position: absolute;
+    top: 150px;
+    left: 200px;
+">
 
+    </div>
+
+
+<div class="body_yy" style="height:600px;width:600px;
+    background-color:white;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 770px;
+    margin-top: 40px;
+">
 <form name="loginForm" id="loginForm" method="post" style="width:50%; margin:0 auto">
+    <div style="
+    text-align:center;
+    font-size: 30px;
+    margin-top: 40px;
+    font-weight: bold;
 
-    <h2 style="text-align:center; margin-bottom: 20px">用户登录</h2>
+"></div>
 
-    <div class="form-group">
+    <div class="form-group" style="
+    margin-top: 20px;
+">
         <div class="row">
             <label class="form-label col-md-4">请输入手机号码</label>
+
             <div class="col-md-5">
                 <input id="mobile" name="mobile" class="form-control" type="text" placeholder="手机号码" required="true"
                        minlength="11" maxlength="11"/>
             </div>
+
             <div class="col-md-1">
             </div>
         </div>
@@ -41,6 +78,7 @@
     <div class="form-group">
         <div class="row">
             <label class="form-label col-md-4">请输入密码</label>
+
             <div class="col-md-5">
                 <input id="password" name="password" class="form-control" type="password" placeholder="密码"
                        required="true" minlength="4" maxlength="16"/>
@@ -50,15 +88,18 @@
 
     <div class="row">
         <div class="col-md-5">
-            <button class="btn btn-primary btn-block" type="reset" onclick="reset()">重置</button>
-        </div>
-        <div class="col-md-5">
             <button class="btn btn-primary btn-block" type="submit" onclick="login()">登录</button>
         </div>
     </div>
 
 </form>
+
+</div>
+</div>
+
+
 </body>
+
 <script>
     $(
         function () {
